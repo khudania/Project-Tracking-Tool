@@ -1,4 +1,4 @@
-# Project-Tracking-Tool
+# Project-Tracking-Tool-v.0.0.1
 
 ```
 We are using Google Chart API
@@ -7,7 +7,7 @@ and PHP and MySql for Developing the Project Tracking Tool
  
 ```
 ```
-Features To Be Added
+Features To Be Added in V.0.0.1
   1. Add Employee
   2. Add Project
   3. Assign manager to Project
