@@ -1,3 +1,48 @@
+<?php
+
+include('./config/connect.php');
+
+
+
+if(isset($_POST['submit'])){
+    $dept = mysqli_real_escape_string($db, $_POST['dept']);
+  
+
+    // Check for same Category
+   $query = "SELECT * FROM department WHERE dept = '$dept'";
+    $result = mysqli_query($db,$query);
+
+// if Category already exists
+if(mysqli_num_rows($result))
+        {
+            echo "<script type='text/javascript'>
+            alert('Department Already exists!')</script>";
+            echo "<script>window.location.href='department.php'</script>";
+        }
+        else{
+            $sql = "INSERT INTO department(dept) 
+            VALUES('$dept')";
+            $res=mysqli_query($db,$sql);
+            if($res)
+            {
+                //if the values are successfully inserted, then move the images to respective folders
+                // $msg = "Department Added successfully";
+                // echo "<script type='text/javascript'>alert('$msg');window.location.href='department.php';</script>";
+
+
+            }
+            //if values are not inserted, show an alert
+            else{
+            echo "<script type='text/javascript'>
+            alert('Could not Add! Try again')</script>";
+            echo "<script>window.location.href='department.php'</script>";
+            }
+        }
+}
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -42,7 +87,7 @@
                                         <div class="form-group">
                                             <input type="text" name="dept" id="dept" class="form-control" placeholder="Enter New Department">
                                         </div>
-                                        <button class="btn btn-success btn-md float-right px-5">Save</button>
+                                        <button type="submit" name="submit" class="btn btn-success btn-md float-right px-5">Save</button>
                                     </form>
                                 </div>
                             </div>
